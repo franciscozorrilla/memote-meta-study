@@ -280,6 +280,7 @@ kbase_df <- readr::read_csv("data/kbase.csv.gz") %>%
 
 metagem_df <- readr::read_csv("data/metagem.csv.gz") %>%
   dplyr::mutate(collection = "metagem")
+metagem_df$numeric = as.numeric(metagem_df$numeric) # For some reason this column is originally read in as a character vector instead of numberic, resulting in errors when trying to rowbind with other dataframes
 
 optflux_df <- readr::read_csv("data/optflux.csv.gz") %>%
   dplyr::mutate(collection = "optflux")
@@ -294,7 +295,6 @@ total_df <- dplyr::bind_rows(agora_df,
                              kbase_df,
                              metagem_df,
                              optflux_df,
-
                              path_df) %>%
   dplyr::mutate(
     model = factor(model),
