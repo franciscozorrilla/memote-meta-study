@@ -11,6 +11,7 @@ colors <- c(
   "carveme" = "#A3D2E2",
   "ebrahim" = "#3E7CBC",
   "kbase" = "#EDA85F",
+  "metagem" = "#F29FA9",
   "optflux" = "#CD2028",
   "path" = "#737878"
 )
@@ -22,6 +23,7 @@ shapes <- c(
   "carveme" = 18,
   "ebrahim" = 17,
   "kbase" = 4,
+  "metagem" = 6,
   "optflux" = 8,
   "path" = 5
 )
@@ -33,6 +35,7 @@ collection_labels <- c(
   "kbase" = "KBase",
   "bigg" = "BiGG",
   "ebrahim" = expression(paste("Ebrahim ", italic("et al."))),
+  "metagem" = "metaGEM",
   "optflux" = "OptFlux"
 )
 
@@ -275,6 +278,9 @@ ebrahim_df <- readr::read_csv("data/ebrahim.csv.gz") %>%
 kbase_df <- readr::read_csv("data/kbase.csv.gz") %>%
   dplyr::mutate(collection = "kbase")
 
+metagem_df <- readr::read_csv("data/metagem.csv.gz") %>%
+  dplyr::mutate(collection = "metagem")
+
 optflux_df <- readr::read_csv("data/optflux.csv.gz") %>%
   dplyr::mutate(collection = "optflux")
 
@@ -286,6 +292,7 @@ total_df <- dplyr::bind_rows(agora_df,
                              carveme_df,
                              ebrahim_df,
                              kbase_df,
+                             metagem_df,
                              optflux_df,
 
                              path_df) %>%
@@ -300,6 +307,7 @@ total_df <- dplyr::bind_rows(agora_df,
         "kbase",
         "bigg",
         "ebrahim",
+        "metagem",
         "optflux"
       )
     ),
