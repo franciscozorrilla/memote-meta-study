@@ -25,7 +25,7 @@ df.num=subset(df,select=-c(1:2))
 ```
 
 ```{r}
-colsCollection=c("#A6A9AA","#000000","#3E7CBC","#A3D2E2","#7E8082","#EDA85F","#CD2028") #labels=c('agora','bigg','ebrahim','embl','path','seed','uminho')
+colsCollection=c("#A6A9AA","#000000","#3E7CBC","#F29FA9","#A3D2E2","#7E8082","#EDA85F","#CD2028") #labels=c('agora','bigg','ebrahim','metagem','embl','path','seed','uminho')
 ```
 
 ```{r Feature importance functions}
@@ -190,7 +190,7 @@ model=model$finalModel
 pred=model$pred
 # Change names classes (MeanDecreasAccuracy --> Mean)
 class.names=levels(model$classes)
-levels(model$classes) <-c('AGORA','CarveMe','Path2Models','KBase','BiGG','Ebrahim et al.','OptFlux')
+levels(model$classes) <-c('AGORA','CarveMe','Path2Models','KBase','BiGG','Ebrahim et al.','metaGEM','OptFlux')
 model$classes <- factor(model$classes)
 ```
 
@@ -201,7 +201,7 @@ plot.rf.var.importance.by.class.andMean.heatmap(model,'test','collection','Featu
 ```
 
 ```{r fig.width=10, fig.height=5}
-plot.rf.var.importance.by.class.andMean.dotplot(model,'test','collection',colorVec=c(colsCollection,'#60d660'),nBestFeatures=15,classNames=c('AGORA','CarveMe','Path2Models','KBase','BiGG','Ebrahim et al.','OptFlux'))
+plot.rf.var.importance.by.class.andMean.dotplot(model,'test','collection',colorVec=c(colsCollection,'#60d660'),nBestFeatures=15,classNames=c('AGORA','CarveMe','Path2Models','KBase','BiGG','Ebrahim et al.','metaGEM','OptFlux'))
 ```
 
 ## Clustering
@@ -305,6 +305,8 @@ is_x <- grepl("embl", rownames(df.num))
 collect_type[is_x] <- "embl"
 is_x <- grepl("path", rownames(df.num))
 collect_type[is_x] <- "path"
+is_x <- grepl("metagem", rownames(df.num))
+collect_type[is_x] <- "metagem"
 is_x <- grepl("seed", rownames(df.num))
 collect_type[is_x] <- "seed"
 is_x <- grepl("uminho", rownames(df.num))
