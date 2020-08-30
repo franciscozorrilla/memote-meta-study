@@ -182,8 +182,8 @@ In order to respect the limited resources on the [DTU high performance computing
 kableExtra::usepackage_latex("threeparttable")
 dplyr::tibble(
   collection = factor(
-    c("agora", "carveme", "path", "kbase", "bigg", "ebrahim", "optflux"),
-    levels = c("agora", "carveme", "path", "kbase", "bigg", "ebrahim", "optflux")
+    c("agora", "carveme", "path", "kbase", "bigg", "ebrahim", "metagem","optflux"),
+    levels = c("agora", "carveme", "path", "kbase", "bigg", "ebrahim", "metagem","optflux")
   ),
   name = c(
     "AGORA",
@@ -195,9 +195,10 @@ dplyr::tibble(
       "Ebrahim \\textit{et al.}",
       kableExtra::footnote_marker_symbol(2)
     ),
+    "metaGEM",
     paste0("OptFlux Models", kableExtra::footnote_marker_symbol(2))
   ),
-  size = c(818, 5587, 2641, 1637, 36, 83, 100)
+  size = c(818, 5587, 2641, 1637, 36, 83, 200, 100)
 ) %>%
   dplyr::inner_join(
     total_df %>% dplyr::group_by(collection) %>% dplyr::summarize(num_test = dplyr::n_distinct(model))
@@ -320,6 +321,7 @@ plot.rf.var.importance.by.class.andMean.dotplot <- function(model, test_labels) 
           "kbase",
           "bigg",
           "ebrahim",
+          "metagem",
           "optflux",
           "mean"
         ))
