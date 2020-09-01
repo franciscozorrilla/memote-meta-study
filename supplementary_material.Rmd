@@ -191,10 +191,8 @@ dplyr::tibble(
     "Path2Models",
     "KBase",
     paste0("BiGG", kableExtra::footnote_marker_symbol(1)),
-    paste0(
-      "Ebrahim \\textit{et al.}",
-      kableExtra::footnote_marker_symbol(2)
-    ),
+    paste0("Ebrahim \\textit{et al.}",
+      kableExtra::footnote_marker_symbol(2)),
     "metaGEM",
     paste0("OptFlux Models", kableExtra::footnote_marker_symbol(2))
   ),
