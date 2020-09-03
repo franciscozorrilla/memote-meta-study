@@ -40,7 +40,7 @@ plot: clean
 		--execute --inplace reports/clustering_scored_data.ipynb
 	docker run -v $(CURDIR):/home/rstudio --tty midnighter/knit-memote:$(TAG) \
 		Rscript scripts/plot_panel.R
-	docker run -v $(CURDIR):/home/rstudio --tty midnighter/knit-memote:$(TAG) \
+	docker run -v $(CURDIR):/home/rstudio -m="16g" --tty midnighter/knit-memote:$(TAG) \
 		Rscript -e "rmarkdown::render('supplementary_material.Rmd')"
 
 ## Lint using flake8
