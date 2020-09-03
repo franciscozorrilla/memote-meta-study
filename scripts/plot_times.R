@@ -16,8 +16,11 @@ uminho_df <- readr::read_csv("data/uminho.csv.gz") %>%
 mmodel_df <- readr::read_csv("data/mmodel.csv.gz") %>%
   dplyr::mutate(collection = "ebrahim")
 
-metagem_df <- readr::read_csv("data/metagem.csv.gz") %>%
-  dplyr::mutate(collection = "metagem")
+metagem_gut_df <- readr::read_csv("data/metagem_gut.csv.gz") %>%
+  dplyr::mutate(collection = "metagem_gut")
+
+metagem_tara_df <- readr::read_csv("data/metagem_tara.csv.gz") %>%
+  dplyr::mutate(collection = "metagem_tara")
 
 agora_df <- readr::read_csv("data/agora.csv.gz") %>%
   dplyr::mutate(collection = "agora")
@@ -35,7 +38,8 @@ total_df <- dplyr::bind_rows(
     bigg_df,
     uminho_df,
     mmodel_df,
-    metagem_df,
+    metagem_gut_df,
+    metagem_tara_df,
     agora_df,
     embl_df,
     path_df,
@@ -46,7 +50,7 @@ total_df <- dplyr::bind_rows(
   ) %>%
   dplyr::mutate(
     model = factor(model),
-    collection = factor(collection, levels = c("agora", "embl", "path", "seed", "bigg", "ebrahim","metagem" ,"uminho")),
+    collection = factor(collection, levels = c("agora", "embl", "path", "seed", "bigg", "ebrahim","metagem_gut","metagem_tara","uminho")),
     test = factor(test),
     section = factor(section),
     numeric = as.numeric(numeric),
