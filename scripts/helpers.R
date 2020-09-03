@@ -301,7 +301,7 @@ total_df <- dplyr::bind_rows(agora_df,
                              ebrahim_df,
                              kbase_df,
                              metagem_gut_df,
-                             metagem_tara_df
+                             metagem_tara_df,
                              optflux_df,
                              path_df) %>%
   dplyr::mutate(
