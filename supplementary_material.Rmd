@@ -182,8 +182,8 @@ In order to respect the limited resources on the [DTU high performance computing
 kableExtra::usepackage_latex("threeparttable")
 dplyr::tibble(
   collection = factor(
-    c("agora", "carveme", "path", "kbase", "bigg", "ebrahim", "metagem","optflux"),
-    levels = c("agora", "carveme", "path", "kbase", "bigg", "ebrahim", "metagem","optflux")
+    c("agora", "carveme", "path", "kbase", "bigg", "ebrahim", "metagem_gut","metagem_tara","optflux"),
+    levels = c("agora", "carveme", "path", "kbase", "bigg", "ebrahim", "metagem_gut","metagem_tara","optflux")
   ),
   name = c(
     "AGORA",

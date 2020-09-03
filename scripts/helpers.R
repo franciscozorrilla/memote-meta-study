@@ -11,7 +11,8 @@ colors <- c(
   "carveme" = "#A3D2E2",
   "ebrahim" = "#3E7CBC",
   "kbase" = "#EDA85F",
-  "metagem" = "#F29FA9",
+  "metagem_gut" = "#F29FA9",
+  "metagem_tara" = "#289261",
   "optflux" = "#CD2028",
   "path" = "#737878"
 )
@@ -23,7 +24,8 @@ shapes <- c(
   "carveme" = 18,
   "ebrahim" = 17,
   "kbase" = 4,
-  "metagem" = 6,
+  "metagem_gut" = 6,
+  "metagem_tara" = 3,
   "optflux" = 8,
   "path" = 5
 )
@@ -35,7 +37,8 @@ collection_labels <- c(
   "kbase" = "KBase",
   "bigg" = "BiGG",
   "ebrahim" = expression(paste("Ebrahim ", italic("et al."))),
-  "metagem" = "metaGEM",
+  "metagem_gut" = "metaGEM_gut",
+  "metagem_tara" = "metaGEM_tara",
   "optflux" = "OptFlux"
 )
 
@@ -278,9 +281,13 @@ ebrahim_df <- readr::read_csv("data/ebrahim.csv.gz") %>%
 kbase_df <- readr::read_csv("data/kbase.csv.gz") %>%
   dplyr::mutate(collection = "kbase")
 
-metagem_df <- readr::read_csv("data/metagem.csv.gz") %>%
-  dplyr::mutate(collection = "metagem")
-metagem_df$numeric = as.numeric(metagem_df$numeric) # For some reason this column is originally read in as a character vector instead of numberic, resulting in errors when trying to rowbind with other dataframes
+metagem_gut_df <- readr::read_csv("data/metagem_gut.csv.gz") %>%
+  dplyr::mutate(collection = "metagem_gut")
+metagem_gut_df$numeric = as.numeric(metagem_gut_df$numeric) # For some reason this column is originally read in as a character vector instead of numberic, resulting in errors when trying to rowbind with other dataframes
+
+metagem_tara_df <- readr::read_csv("data/metagem_tara.csv.gz") %>%
+  dplyr::mutate(collection = "metagem_tara")
+metagem_tara_df$numeric = as.numeric(metagem_tara_df$numeric) # For some reason this column is originally read in as a character vector instead of numberic, resulting in errors when trying to rowbind with other dataframes
 
 optflux_df <- readr::read_csv("data/optflux.csv.gz") %>%
   dplyr::mutate(collection = "optflux")
@@ -293,7 +300,8 @@ total_df <- dplyr::bind_rows(agora_df,
                              carveme_df,
                              ebrahim_df,
                              kbase_df,
-                             metagem_df,
+                             metagem_gut_df,
+                             metagem_tara_df
                              optflux_df,
                              path_df) %>%
   dplyr::mutate(
@@ -307,7 +315,8 @@ total_df <- dplyr::bind_rows(agora_df,
         "kbase",
         "bigg",
         "ebrahim",
-        "metagem",
+        "metagem_gut",
+        "metagem_tara",
         "optflux"
       )
     ),
